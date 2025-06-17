@@ -90,3 +90,90 @@ const perguntas = [
       ],
   }
 ];
+
+const pergunta = document.getElementById("pergunta");
+const titulo = document.getElementById("titulo");
+const botoesResposta = document.getElementById("btnRespostas");
+const botaoConfirma = document.getElementById("confirma");
+let indexQuestaoAtual = 0;
+let pontos = 0;
+
+function comeco() {
+  indexQuestaoAtual = 0;
+  pontos = 0;
+  questao();
+}
+
+function btnReset() {
+  botaoConfirma.style.display = "none";
+  while (botoesResposta.firstChild) {
+    botoesResposta.removeChild(botoesResposta.firstChild);
+  }
+}
+
+function clicou(btn) {
+  respostas = perguntas[indexQuestaoAtual].respostas;
+  const btnCorreto = respostas.filter((resposta) => resposta.correto == true)[0];
+
+  const btnClicado = btn.target;
+  const valorCorreto = btnClicado.dataset.id == btnCorreto.id;
+
+  if (valorCorreto == true) {
+    btnClicado.classList.add("acertou");
+    pontos++;
+  } else {
+    btnClicado.classList.add("errou");
+  }
+  Array.from(btnRespostas.children).forEach((button) => {
+    button.disabled = true;
+  })
+  botaoConfirma.style.display = "flex";
+}
+
+function questao() {
+  btnReset();
+  let questaoAtual = perguntas[indexQuestaoAtual];
+  let num = indexQuestaoAtual + 1;
+  pergunta.innerHTML = num + ". " + questaoAtual.pergunta;
+
+  questaoAtual.respostas.forEach((resposta) => {
+    const botao = document.createElement("button");
+    botao.innerHTML = resposta.texto;
+    botao.dataset.id = resposta.id;
+    botao.classList.add("btn");
+    botao.addEventListener("click", clicou);
+    botoesResposta.appendChild(botao);
+  })
+}
+
+function proxima() {
+  indexQuestaoAtual++;
+  if (indexQuestaoAtual < perguntas.length) {
+    questao();
+  } else {
+    pontuacao();
+  }
+}
+
+function pontuacao() {
+  btnReset();
+  if(pontos == perguntas.length) {
+    titulo.innerHTML = "PARABÉNS!!!<br>PELO VISTO VOCÊ É REALMENTE <span id = 'bebo'>BEBO</span>"
+    pergunta.innerHTML = ""
+  } else {
+    pergunta.innerHTML = `Você acertou ${pontos} de ${perguntas.length} perguntas<br>
+    pelo visto você não é Bebo...`
+    botaoConfirma.innerHTML = "Jogar novamente?"
+    botaoConfirma.style.display = "flex";
+  }
+}
+
+botaoConfirma.addEventListener("click", () => {
+  if (indexQuestaoAtual < perguntas.length) {
+    proxima();
+  } else {
+    comeco();
+  }
+})
+
+comeco();
