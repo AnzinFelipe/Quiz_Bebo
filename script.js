@@ -109,7 +109,7 @@ function tiraImg() {
 
 function comeco() {
   tiraImg();
-  indexQuestaoAtual = 9;
+  indexQuestaoAtual = 0;
   pontos = 0;
   questao();
 }
