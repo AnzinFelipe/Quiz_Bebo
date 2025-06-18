@@ -101,8 +101,6 @@ const divImg = document.getElementById("divImg");
 let indexQuestaoAtual = 0;
 let pontos = 0;
 let imagem = document.getElementById("img");
-imagem.src = "Weezer.jpg";
-imagem.alt = "Weezer";
 imagem.width = 500;
 imagem.height = 500;
 
@@ -131,16 +129,23 @@ function clicou(btn) {
 
   const btnClicado = btn.target;
   const valorCorreto = btnClicado.dataset.id == btnCorreto.id;
-
+   
   if (valorCorreto == true) {
     btnClicado.classList.add("acertou");
     pontos++;
+    if (indexQuestaoAtual == 2) {
+      alert("Eu sei");
+    }
   } else {
     btnClicado.classList.add("errou");
+    if (indexQuestaoAtual == 2) {
+      alert("ASSUMA A RESPONSABILIDADE");
+    }
   }
   Array.from(btnRespostas.children).forEach((button) => {
     button.disabled = true;
   })
+  botaoConfirma.innerHTML = "Confirmar";
   botaoConfirma.style.display = "flex";
 }
 
@@ -175,12 +180,17 @@ function pontuacao() {
     titulo.innerHTML = "PARABÉNS!!!<br>PELO VISTO VOCÊ É REALMENTE <span id = 'bebo'>BEBO</span>";
     pergunta.innerHTML = "Feliz aniversário!!!"
     trap.play();
+    imagem.src = "Might.jpg";
+    imagem.alt = "All Might";
+    divImg.appendChild(imagem);
   } else {
     pergunta.innerHTML = `Você acertou ${pontos} de ${perguntas.length} perguntas<br>
     Pelo visto você não é Bebo...`;
     botaoConfirma.innerHTML = "Jogar novamente?";
     botaoConfirma.style.display = "flex";
     weezer.play();
+    imagem.src = "Weezer.jpg";
+    imagem.alt = "Weezer";
     divImg.appendChild(imagem);
   }
 }
