@@ -95,10 +95,24 @@ const pergunta = document.getElementById("pergunta");
 const titulo = document.getElementById("titulo");
 const botoesResposta = document.getElementById("btnRespostas");
 const botaoConfirma = document.getElementById("confirma");
+const trap = document.getElementById("trap");
+const weezer = document.getElementById("weezer");
+const divImg = document.getElementById("divImg");
 let indexQuestaoAtual = 0;
 let pontos = 0;
+let imagem = document.getElementById("img");
+imagem.src = "Weezer.jpg";
+imagem.alt = "Weezer";
+imagem.width = 500;
+imagem.height = 500;
+
+function tiraImg() {
+  divImg.removeChild(imagem);
+  weezer.pause();
+}
 
 function comeco() {
+  tiraImg();
   indexQuestaoAtual = 0;
   pontos = 0;
   questao();
@@ -158,13 +172,16 @@ function proxima() {
 function pontuacao() {
   btnReset();
   if(pontos == perguntas.length) {
-    titulo.innerHTML = "PARABÉNS!!!<br>PELO VISTO VOCÊ É REALMENTE <span id = 'bebo'>BEBO</span>"
-    pergunta.innerHTML = ""
+    titulo.innerHTML = "PARABÉNS!!!<br>PELO VISTO VOCÊ É REALMENTE <span id = 'bebo'>BEBO</span>";
+    pergunta.innerHTML = "Feliz aniversário!!!"
+    trap.play();
   } else {
     pergunta.innerHTML = `Você acertou ${pontos} de ${perguntas.length} perguntas<br>
-    pelo visto você não é Bebo...`
-    botaoConfirma.innerHTML = "Jogar novamente?"
+    Pelo visto você não é Bebo...`;
+    botaoConfirma.innerHTML = "Jogar novamente?";
     botaoConfirma.style.display = "flex";
+    weezer.play();
+    divImg.appendChild(imagem);
   }
 }
 

@@ -84,3 +84,7 @@ body {
 .errou {
     background: rgb(241, 185, 185);
 }
+
+#img {
+    text-align: center;
+}
