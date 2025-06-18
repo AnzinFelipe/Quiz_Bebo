@@ -137,7 +137,7 @@ function clicou(btn) {
   } else {
     btnClicado.classList.add("errou");
     if (indexQuestaoAtual == 2) {
-      alert("ASSUMA A RESPONSABILIDADE");
+      alert("ASSUMA A RESPONSABILIDADE E DIGA LOGO QUE VOCÊ NÃO LEMBRA");
     }
   }
   Array.from(btnRespostas.children).forEach((button) => {
