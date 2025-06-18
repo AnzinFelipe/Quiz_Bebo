@@ -81,7 +81,7 @@ const perguntas = [
       ],
   },
   {
-    pergunta: "Gachachulimoneropalamano...",
+    pergunta: "Qual o final do nome do Gachachu?",
     respostas: [
         { id: 1, texto: "Minino", correto: true },
         { id: 2, texto: "Pipinhos", correto: false },
@@ -101,8 +101,6 @@ const divImg = document.getElementById("divImg");
 let indexQuestaoAtual = 0;
 let pontos = 0;
 let imagem = document.getElementById("img");
-imagem.width = 500;
-imagem.height = 500;
 
 function tiraImg() {
   divImg.removeChild(imagem);
