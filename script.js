@@ -109,6 +109,7 @@ function tiraImg() {
 
 function comeco() {
   tiraImg();
+  trap.pause();
   indexQuestaoAtual = 0;
   pontos = 0;
   questao();
