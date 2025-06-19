@@ -181,6 +181,8 @@ function pontuacao() {
     imagem.src = "Might.jpg";
     imagem.alt = "All Might";
     divImg.appendChild(imagem);
+    botaoConfirma.innerHTML = "Receber sua recompensa";
+    botaoConfirma.style.display = "flex";
   } else {
     pergunta.innerHTML = `Você acertou ${pontos} de ${perguntas.length} perguntas<br>
     Pelo visto você não é Bebo...`;
@@ -193,9 +195,23 @@ function pontuacao() {
   }
 }
 
+function recompensa() {
+  tiraImg();
+  pontos = 0;
+  titulo.innerHTML = "Aqui está seu prêmio!";
+  pergunta.innerHTML = "Você receberá o jogo: Rift of the NecroDancer na steam 😎";
+  botaoConfirma.innerHTML = "Jogar novamente?";
+  botaoConfirma.style.display = "flex";
+  imagem.src = "Rift.webp";
+  imagem.alt = "Rift";
+  divImg.appendChild(imagem);
+}
+
 botaoConfirma.addEventListener("click", () => {
   if (indexQuestaoAtual < perguntas.length) {
     proxima();
+  } else if (indexQuestaoAtual == perguntas.length && pontos == perguntas.length) {
+    recompensa();
   } else {
     comeco();
   }
