@@ -63,12 +63,12 @@ const perguntas = [
       ],
   },
   {
-    pergunta: "Faça essa soma simples: ovo + ovo = ?",
+    pergunta: "Quem você era no Recife Revengers?",
     respostas: [
-        { id: 1, texto: "janta", correto: false },
-        { id: 2, texto: "Oovvoo", correto: false },
-        { id: 3, texto: "2 ovos", correto: false },
-        { id: 4, texto: "Queijo", correto: true },
+        { id: 1, texto: "Taiju Shiba", correto: false },
+        { id: 2, texto: "Takemichi Hanagaki", correto: false },
+        { id: 3, texto: "South Terano", correto: false },
+        { id: 4, texto: "Draken", correto: true },
       ],
   },
   {
