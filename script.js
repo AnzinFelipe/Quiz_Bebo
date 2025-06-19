@@ -108,6 +108,7 @@ function tiraImg() {
 }
 
 function comeco() {
+  titulo.innerHTML = "Quiz para saber se você é realmente <span id = 'bebo'>BEBO</span>"
   tiraImg();
   trap.pause();
   indexQuestaoAtual = 0;
